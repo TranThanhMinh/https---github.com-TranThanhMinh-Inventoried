@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:weightSum="10"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#b9ffffff"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/btn_back_selec_warehouse"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Chọn mã kho"
+            android:textColor="#000000"
+            android:gravity="center_vertical|center_horizontal"
+            android:textSize="18dp"
+            android:layout_marginBottom="5dp"
+            android:textStyle="bold"/>
+
+
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/lv_warehouse_code"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:divider="#00ffffff"
+        android:padding="3dp">
+    </ListView>
+
+
+</LinearLayout>

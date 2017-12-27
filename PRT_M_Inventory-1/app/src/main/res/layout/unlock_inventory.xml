@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#b9ffffff">
+
+        <ImageView
+            android:id="@+id/img_back_unlock"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:padding="5dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Mở khóa phiếu kiểm kê"
+            android:textColor="#000000"
+            android:gravity="center_vertical|center_horizontal"
+            android:textSize="15sp"
+            android:layout_marginBottom="5dp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/btn_reload_inventory_onday"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
+            android:visibility="invisible"
+            android:src="@drawable/refresh" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:text="Nhập số phiếu kiểm kê"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:textSize="12dp"
+            android:text="Lưu ý: 1 acc chỉ được thao tác trên 1 phiếu kiểm kê"/>
+
+        <EditText
+            android:id="@+id/edt_unlock"
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:layout_height="40dp"
+            android:textSize="13sp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+
+            android:background="@android:drawable/editbox_background_normal"
+            android:hint=" Phiếu kiểm kê"/>
+
+        <Button
+            android:id="@+id/btn_unlock"
+            android:layout_marginTop="5dp"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/button_orange"
+            android:textColor="#ffffff"
+            android:text="Mở Khóa"
+            android:textSize="14sp"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+
+</LinearLayout>

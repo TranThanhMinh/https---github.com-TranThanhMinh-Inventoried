@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/topLayout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:keepScreenOn="true">
+
+  <vn.com.fpt.frt_minventory.Scanner.CameraSourcePreview
+      android:id="@+id/preview"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    <vn.com.fpt.frt_minventory.Scanner.GraphicOverlay
+        android:id="@+id/graphicOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+  </vn.com.fpt.frt_minventory.Scanner.CameraSourcePreview>
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#a3a0a0"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="Check Barcode" />
+
+
+  <ImageView
+      android:id="@+id/img_off_camera"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentEnd="true"
+      android:layout_marginBottom="10dp"
+      android:layout_marginEnd="10dp"
+      android:src="@drawable/cast_ic_notification_disconnect" />
+
+</RelativeLayout>

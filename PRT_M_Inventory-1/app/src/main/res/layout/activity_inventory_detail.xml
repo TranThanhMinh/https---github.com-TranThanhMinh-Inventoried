@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         android:background="@drawable/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+          android:weightSum="10"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:background="#b9ffffff"
+            android:textColor="#000000"
+            android:weightSum="4">
+
+            <ImageView
+                android:id="@+id/btn_back_inventory_detail"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:padding="5dp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/back" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Chi tiết phiếu KK"
+                    android:textAlignment="center"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_So_Phieu_Detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="Số phiếu"
+                    android:textAlignment="center" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/layout_border"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="9"
+            android:weightSum="4"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textSize="14dp"
+                        android:gravity="center_vertical"
+                        android:text="Mã kho:" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3">
+
+                        <TextView
+                            android:id="@+id/txt_MaKho_Detail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:textSize="14dp"
+                            android:gravity="center_vertical"
+                            android:hint=" Chọn Mã kho trước khi check" />
+
+                        <ImageView
+                            android:id="@+id/img_Warehouse"
+                            android:layout_width="25dp"
+                            android:padding="5dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/next" />
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="14dp"
+                        android:text="Mã SP:" />
+
+                    <EditText
+                        android:id="@+id/txt_MaSP_Detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:hint=" Mã sản phẩm "
+                        android:textSize="14dp"
+                        android:imeOptions="actionSearch"
+                        android:inputType="number" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="14dp"
+                        android:text=" Tên SP:" />
+
+                    <EditText
+                        android:id="@+id/edt_TenSP_Detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:hint=" Tên sản phẩm "
+                        android:textSize="14dp"
+                        android:inputType="textPersonName" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="14dp"
+                        android:text=" Serial:" />
+
+                    <EditText
+                        android:id="@+id/edt_Serial_Detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:textSize="14dp"
+                        android:hint=" Serial "
+                        android:imeOptions="actionSearch"
+                        android:inputType="textPersonName" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="14dp"
+                        android:text=" Số lượng:" />
+
+                    <EditText
+                        android:id="@+id/edt_SoLuong_Detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:textSize="14dp"
+                        android:hint=" Số lượng "
+                        android:inputType="number" />
+                </TableRow>
+
+
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:gravity="center_vertical"
+                    android:textSize="14dp"
+                    android:text=" Ghi chú:" />
+            </TableLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="3dp"
+                android:layout_weight="3"
+                android:weightSum="2"
+                android:background="@drawable/note"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/edt_note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:padding="5dp"
+                    android:textSize="14dp"
+                    android:gravity="top|left"
+                    android:lines="8"
+                    android:maxLines="12"
+                    android:minLines="6"
+                    android:inputType="textMultiLine"
+                    android:background="@android:color/transparent"
+                    android:hint=" Nhập ghi chú" />
+                <!--<EditText-->
+                    <!--android:id="@+id/edt_note"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@android:color/transparent"-->
+                    <!--android:gravity="top|left"-->
+                    <!--android:hint=" Nhập ghi chú"-->
+                    <!--android:inputType="textMultiLine"-->
+                    <!--android:lines="8"-->
+                    <!--android:maxLines="10"-->
+                    <!--android:minLines="6"-->
+                    <!--android:padding="5dp"-->
+                    <!--android:scrollbars="vertical"-->
+                    <!--android:textSize="14sp" />-->
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/ln_btn_inventory_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp"
+                android:weightSum="3"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center">
+                <ImageButton
+                    android:id="@+id/imgScan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#fbf0f2f5"
+                    android:layout_marginRight="50dp"
+                    android:src="@drawable/barcode" />
+                <ImageView
+                    android:id="@+id/imgCamera"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_weight="1"
+                    android:background="#fbf0f2f5"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_camera" />
+                <ImageButton
+                    android:id="@+id/img_List_inventoried"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="#fbf0f2f5"
+                    android:layout_weight="1"
+                    android:src="@drawable/showlist" />
+            </LinearLayout>
+
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_Save_Detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_green"
+            android:textColor="#FFFFFF"
+            android:textSize="12dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:text=" Lưu " />
+
+        <Button
+            android:id="@+id/btn_Frefesh_Detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_blue"
+            android:textColor="#FFFFFF"
+            android:textSize="12dp"
+            android:layout_weight="1"
+            android:text=" Làm mới " />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_Exit_Detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/button_orange"
+        android:textColor="#FFFFFF"
+        android:textSize="12dp"
+        android:padding="3dp"
+        android:text=" Kết thúc kiểm kê " />
+    </LinearLayout>

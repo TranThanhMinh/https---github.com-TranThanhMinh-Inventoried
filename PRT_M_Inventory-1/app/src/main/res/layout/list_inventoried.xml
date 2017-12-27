@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:weightSum="10"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#b9ffffff"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/btn_back_list_inventoried"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:padding="5dp"
+
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Danh sách các phiếu đã kiểm kê"
+            android:textColor="#000000"
+            android:gravity="center_horizontal|center_vertical"
+            android:textSize="15dp"
+            android:layout_marginBottom="5dp"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/imSearch"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:paddingTop="5dp"
+                android:paddingLeft="2dp"
+                android:visibility="visible"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/ic_sreach_image" />
+            <ImageView
+                android:id="@+id/btn_update_list_inventoried"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:padding="5dp"
+                android:visibility="visible"
+                android:src="@drawable/save" />
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_weight="0.5"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:weightSum="3"
+        android:background="@drawable/layout_border">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="9dp"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_search_category_default" />
+
+        <EditText
+            android:id="@+id/search_list_inventoried"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:layout_weight="2"
+            android:textSize="14sp"
+            android:paddingLeft="5dp"
+            android:hint="Nhập số phiếu cần tìm "
+            android:imeOptions="actionSearch"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_list_inventoried"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:divider="#00ffffff"
+        android:dividerHeight="6dp"
+        android:layout_weight="8.5"
+        android:padding="3dp">
+    </ListView>
+
+</LinearLayout>

@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">FRT-MInventory</string>
+    <string name="barcode_success">Barcode read successfully</string>
+    <string name="barcode_failure">No barcode captured</string>
+    <string name="barcode_error">"Error reading barcode: %1$s"</string>
+    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
+    <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
+    <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
+    <string name="Noti_Number">Số lượng không được lớn hơn 10</string>
+
+
+
+
+    <string name="Noti_Number_Empty">Vui lòng nhập số lượng</string>
+        <string name="Noti_Number_Max">Số lượng không được lớn hơn 10</string>
+        <string name="Noti_Number_Min">Số lượng không được nhỏ hơn 0</string>
+        <string name="Noti_FromTime">Chưa nhập giờ bắt đầu></string>
+        <string name="Noti_ToTime">Chưa nhập giờ kết thúc</string>
+        <string name="Noti_FromDate">Chưa nhập ngày bắt đầu</string>
+        <string name="Noti_ToDate">Chưa nhập ngày kết thúc</string>
+        <string name="Noti_Vung">Chưa chọn vùng</string>
+        <string name="Noti_Mien">Chưa chọn miền</string>
+        <string name="Noti_KhuVuc">Chưa chọn khu vực</string>
+        <string name="Noti_Shop">Chưa chọn shop</string>
+        <string name="Yes">Có </string>
+        <string name="No">Không </string>
+        <string name="Noti_shop">Bạn có chắc máy có trong shop? </string>
+
+
+
+
+</resources>
