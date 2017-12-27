@@ -152,8 +152,7 @@ public class ListInventoried extends Activity {
                 }
             });
             btn_update_list_inventoried.setVisibility(View.GONE);
-
-
+            //update
         }
         if (docstatus.equals("O")) {
 
