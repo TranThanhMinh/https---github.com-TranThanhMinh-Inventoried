@@ -29,7 +29,14 @@
             android:textSize="18sp"
             android:textStyle="bold" />
     </RelativeLayout>
+    <ImageView
+        android:id="@+id/imHide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
 
+        />
     <GridView
         android:id="@+id/lv_Camera"
         android:layout_width="match_parent"

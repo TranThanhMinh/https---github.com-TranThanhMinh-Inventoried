@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -25,7 +26,9 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +62,7 @@ import static vn.com.fpt.frt_minventory.Views.ListInventoried.LIST_INVENTORIED;
 public class CameraActivity extends Activity implements Adapter_Camera.funcDelete, View.OnClickListener {
 
 
-    ImageView btnTake, img_view, EndCamera;
+    ImageView btnTake, img_view, EndCamera,imHide;
     Adapter_Camera adapter;
     AdapterViewImage adapterView;
     String encodedImage, stringbase64, Docentry;
@@ -69,6 +72,7 @@ public class CameraActivity extends Activity implements Adapter_Camera.funcDelet
     String id;
     List<CameraResult> list_photo = new ArrayList<CameraResult>();
     List<Photo> listCamera = new ArrayList<Photo>();
+    List<Photo> listCamera1 = new ArrayList<Photo>();
     List<ViewImage> searchImages = new ArrayList<>();
     List<ViewImage> sort = new ArrayList<>();
 
@@ -82,6 +86,7 @@ public class CameraActivity extends Activity implements Adapter_Camera.funcDelet
         super.onCreate(savedInstanceState);
         setContentView(R.layout.camera_activity);
         retrofit = getConnect();
+        imHide = (ImageView) findViewById(R.id.imHide);
         EndCamera = (ImageView) findViewById(R.id.img_turn_off_camera);
         btnTake = (ImageView) findViewById(R.id.img_take_photo);
         img_view = (ImageView) findViewById(R.id.photo_from_sdcard);
@@ -191,48 +196,46 @@ public class CameraActivity extends Activity implements Adapter_Camera.funcDelet
 //        list_photo.add(cameraResult);
 //
         // lấy ảnh từ thư viện của thết bị
-        if (resultCode == RESULT_OK && requestCode == IMG_PICK) {
+        if (requestCode == 2 && resultCode == Activity.RESULT_OK && data != null) {
+            Bitmap bitmap;
+            camera = true;
+            if (listCamera.size() < 3) {
+                //  String imagePath = "";
+                // String[] imgData = {MediaStore.Images.Media.DATA};
+                final Uri imageUri = data.getData();
+                imHide.setImageURI(imageUri);
+                //   final InputStream imageStream;
+                //imageStream = getContentResolver().openInputStream(imageUri);
+                Bitmap image = ((BitmapDrawable) imHide.getDrawable()).getBitmap();
+                Bitmap image1= scaleBitmap(image);
+                // bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+                encodedImage = ConvertBitmapToString(image1);
+                String result1 = encodedImage.replaceAll("\\n", "");
+                String result = result1.replaceAll(" ", "");
+                stringbase64 = result;
+//                String url = "";
+//                String url1 = "";
+//                String[] a = encodedImage.split("\\n");
+//                for (String line : a) {
+//                    url = url + "" + line;
+//                }
+//                String[] b = url.split(" ");
+//                for (String line : b) {
+//                    url1 = url1 + "" + line;
+//                }
+//                stringbase64 = url1;
 
-            String imagePath = "";
-            String[] imgData = {MediaStore.Images.Media.DATA};
-            Uri pickedUri = data.getData();
-            Bitmap photo = null;
-            try {
-                photo = MediaStore.Images.Media.getBitmap(this.getContentResolver(), pickedUri);
-            } catch (IOException e) {
-                e.printStackTrace();
+                Log.d("basehuhu", result + "");
+                Photo ph = new Photo();
+                ph.setId(id);
+                ph.setUri(stringbase64);
+                ph.setBitmap(imageUri.toString());
+                listCamera.add(ph);
+                adapter = new Adapter_Camera(this, listCamera, this);
+                lvPhoto.setAdapter(adapter);
+            } else {
+                Toast.makeText(this, "Bạn chỉ chụp tối đa 3 hình ", Toast.LENGTH_SHORT).show();
             }
-
-            Cursor imgCursor = managedQuery(pickedUri, imgData, null, null, null);
-            if (imgCursor != null) {
-                int index = imgCursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-                imgCursor.moveToFirst();
-                imagePath = imgCursor.getString(index);
-            } else
-                imagePath = pickedUri.getPath();
-            Log.e("imagePath", imagePath);
-            encodedImage = ConvertBitmapToString(photo);
-            String url = "";
-            String url1 = "";
-            String[] a = encodedImage.split("\\n");
-            for (String line : a) {
-                url = url + "" + line;
-            }
-            String[] b = url.split(" ");
-            for (String line : b) {
-                url1 = url1 + "" + line;
-            }
-
-            stringbase64 = url1;
-
-            Photo ph = new Photo();
-            ph.setId(id);
-            ph.setUri(stringbase64);
-            ph.setBitmap(pickedUri.toString());
-            listCamera.add(ph);
-            adapter = new Adapter_Camera(this, listCamera, this);
-            lvPhoto.setAdapter(adapter);
-
         } else if (requestCode == 1 && resultCode == Activity.RESULT_OK && data != null) {
             camera = true;
             if (listCamera.size() < 3) {
@@ -264,46 +267,7 @@ public class CameraActivity extends Activity implements Adapter_Camera.funcDelet
             } else {
                 Toast.makeText(this, "Bạn chỉ chụp tối đa 3 hình ", Toast.LENGTH_SHORT).show();
             }
-        } else if (requestCode == 2 && resultCode == Activity.RESULT_OK && data != null) {
-            camera = true;
-            if (listCamera.size() < 3) {
-                Uri selectedImage = data.getData();
-                Bitmap photo = (Bitmap) data.getExtras().get("data");
-                String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                Cursor cursor = getContentResolver().query(selectedImage,
-                        filePathColumn, null, null, null);
-                cursor.moveToFirst();
 
-                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                String picturePath = cursor.getString(columnIndex);
-                Bitmap bitmap = decodeFile(picturePath);
-                cursor.close();
-                encodedImage = ConvertBitmapToString(bitmap);
-                String url = "";
-                String url1 = "";
-                String[] a = encodedImage.split("\\n");
-                for (String line : a) {
-                    url = url + "" + line;
-                }
-                String[] b = url.split(" ");
-                for (String line : b) {
-                    url1 = url1 + "" + line;
-                }
-                Log.d("basehuhu", url1);
-                stringbase64 = url1;
-                Uri selectImage = data.getData();
-                Log.d("im", selectedImage.toString());
-                Photo ph = new Photo();
-                ph.setId(id);
-                ph.setUri(stringbase64);
-                ph.setBitmap(selectImage.toString());
-                listCamera.add(ph);
-                adapter = new Adapter_Camera(this, listCamera, this);
-                lvPhoto.setAdapter(adapter);
-
-            } else {
-                Toast.makeText(this, "Bạn chỉ chụp tối đa 3 hình ", Toast.LENGTH_SHORT).show();
-            }
         }
     }
 
@@ -337,7 +301,16 @@ public class CameraActivity extends Activity implements Adapter_Camera.funcDelet
         encodedImage = Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT);
         return encodedImage;
     }
-
+    public Bitmap scaleBitmap(Bitmap mBitmap) {
+        int ScaleSize = 250;//max Height or width to Scale
+        int width = mBitmap.getWidth();
+        int height = mBitmap.getHeight();
+        float excessSizeRatio = width > height ? width / ScaleSize : height / ScaleSize;
+        Bitmap bitmap = Bitmap.createBitmap(
+                mBitmap, 0, 0,(int) (width/excessSizeRatio),(int) (height/excessSizeRatio));
+        //mBitmap.recycle(); if you are not using mBitmap Obj
+        return bitmap;
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -363,6 +336,7 @@ public class CameraActivity extends Activity implements Adapter_Camera.funcDelet
             public void onClick(DialogInterface dialog, int which) {
                 // Do nothing but close the dialog
                 listCamera.remove(i);
+                camera = true;
                 adapter.notifyDataSetChanged();
                 lvPhoto.setAdapter(adapter);
                 dialog.dismiss();
@@ -374,7 +348,7 @@ public class CameraActivity extends Activity implements Adapter_Camera.funcDelet
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // Do nothing
-                camera = true;
+
                 dialog.dismiss();
             }
         });
@@ -383,29 +357,34 @@ public class CameraActivity extends Activity implements Adapter_Camera.funcDelet
         alert.show();
 
     }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        setResult(LIST_INVENTORIED, new Intent().putExtra("camera", (Serializable) listCamera));
-        finish();
+        if (camera == true) {
+            setResult(LIST_INVENTORIED, new Intent().putExtra("camera", (Serializable) listCamera));
+            finish();
+        } else finish();
     }
 
     @Override
     public void onClick(View view) {
         if (view == EndCamera) {
-            if (camera = true) {
-                setResult(LIST_INVENTORIED, new Intent().putExtra("camera", (Serializable) listCamera));
+            if (camera == true) {
+
+                for(Photo p:listCamera) {
+                    listCamera1.add(p);
+                    Log.e("ma", p.getUri());
+                }
+                setResult(LIST_INVENTORIED, new Intent().putExtra("camera", (Serializable) listCamera1));
                 finish();
-
-            }
+            } else finish();
         } else if (view == btnTake) {
-
             Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(cameraIntent, 1);
         } else if (view == img_view) {
             Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(intent, 2);
+
 //            Intent pickIntent = new Intent();
 //            pickIntent.setType("image/*");
 //            pickIntent.setAction(Intent.ACTION_GET_CONTENT);

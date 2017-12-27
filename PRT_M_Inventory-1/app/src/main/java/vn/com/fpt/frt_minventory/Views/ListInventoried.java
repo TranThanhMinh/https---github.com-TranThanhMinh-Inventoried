@@ -19,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -357,9 +358,7 @@ public class ListInventoried extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (docstatus.equals("O")) {
-            getImage();
-        }
+
     }
 
     protected void loadlistinventoried() {
@@ -398,7 +397,7 @@ public class ListInventoried extends Activity {
                     if (images != null && images.size() > 0) {
                         for (int j = arrItemInventoriedResult.size() - 1; j >= 0; j--) {
                             for (int i = 0; i < images.size(); i++) {
-                                if (images.get(i).getSerial().equals(arrItemInventoriedResult.get(j).getSerial()) || arrItemInventoriedResult.get(j).getItemCode().equals(books.get(i).getItemCode())) {
+                                if (images.get(i).getSerial().equals(arrItemInventoriedResult.get(j).getSerial())) {
                                     arrItemInventoriedResult.get(j).setCheck(true);
                                     i = images.size();
                                 } else {
@@ -478,7 +477,6 @@ public class ListInventoried extends Activity {
 
             for (int i = 0; i < list.size(); i++) {
                 //Log.d("image",list.get(i).getId()+" - "+list.get(i).getUri());
-
                 mRealm.beginTransaction();
                 MPhoto book = mRealm.createObject(MPhoto.class);
                 book.setId(list.get(i).getId());
@@ -487,12 +485,15 @@ public class ListInventoried extends Activity {
                 book.setDocEntry(Docentry);//so phieu
                 book.setFileByte(list.get(i).getUri());//base64
                 book.setSerial(serial);//base64
-                Log.e("image", list.get(i).getUri() + "a");
-                Log.e("name", id_ + i + ".jpg");
+                Log.e("getUri", list.get(i).getUri() + "a");
+                Log.e("getBitmap", list.get(i).getBitmap());
                 book.setImageName(id_ + i + ".jpg");//name.jpg
                 book.setItemCode(id_);//ma san pham
                 book.setDeviceType("1");//1
                 mRealm.commitTransaction();
+            }
+            if (docstatus.equals("O")) {
+                getImage();
             }
         }
 

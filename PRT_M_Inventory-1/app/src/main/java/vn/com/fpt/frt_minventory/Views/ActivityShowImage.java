@@ -30,7 +30,7 @@ public class ActivityShowImage extends AppCompatActivity {
         inBack.setImageDrawable(getResources().getDrawable(R.drawable.ic_back));
         uri = (String) getIntent().getSerializableExtra("uri");
         if (uri.contains("http")) {
-            Picasso.with(this).load(uri).resize(500, 500).into(imView);
+            Picasso.with(this).load(uri).resize(800, 800).into(imView);
             inBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -38,7 +38,7 @@ public class ActivityShowImage extends AppCompatActivity {
                 }
             });
         } else {
-            Picasso.with(this).load(Uri.parse(uri)).resize(500, 500).into(imView);
+            Picasso.with(this).load(Uri.parse(uri)).resize(800, 800).into(imView);
             inBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

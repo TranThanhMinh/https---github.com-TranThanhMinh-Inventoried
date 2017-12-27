@@ -620,27 +620,6 @@ public class InventoryDetail extends AppCompatActivity {
                 if (list.get(0).getResult() == 0) {//0
                     progressDialog.dismiss();
                     Toasty.success(InventoryDetail.this, "Tải hình ảnh thất bại !").show();
-//                    if (pos == 0) {
-//                        Toasty.success(InventoryDetail.this, "Kiểm kê  thành công!").show();
-//                        Intent intent = getIntent();
-//                        setResult(InventoryOnDay.RC_IVNENTORY_FINISH, intent);
-//                        finish();
-//                        RealmResults<MPhoto> books = mRealm.where(MPhoto.class).equalTo("DocEntry",Docentry).findAll();
-//                        if (!books.isEmpty()) {
-//                            for (int i = books.size() - 1; i >= 0; i--) {
-//                                mRealm.beginTransaction();
-//                                books.get(i).deleteFromRealm();
-//                                mRealm.commitTransaction();
-//                            }
-//                        } else Log.d("thong bao", "khong co");
-//                    } else {
-////                        Upload(listUp, pos - 1);
-//                    }
-//                    Log.d("getDeviceType", list.get(0).getDeviceType() + "");
-//                    Log.d("getImageName", list.get(0).getImageName() + "");
-//                    Log.d("getDocentry", list.get(0).getDocentry() + "");
-//                    Log.d("getResult", list.get(0).getResult() + "");
-                    //  Toast.makeText(MainActivity.this, "Thất bại", Toast.LENGTH_SHORT).show();
                 } else {//1
                     if (pos == 0) {
                         Intent intent = getIntent();
